@@ -3,16 +3,17 @@ const uuid = require("uuid/v4");
 const OsSchema = new mongoose.Schema(
   {
     thumbnail: String,
-    nome: String,
+    descricao: String,
     numero: Number,
+    responsavel: String,
+    valor: Number,
     id: { type: String, default: uuid },
     type: String,
-    descripition: String,
+    description: String,
     date: Date,
     status: String,
-    situacao: String,
     url: String,
-    observation: String,
+    observacao: String,
     search: [String],
     user: {
       type: mongoose.Schema.Types.ObjectId,

@@ -4,39 +4,41 @@ const User = require("../models/User");
 module.exports = {
   //index get
   async index(req, res) {
-    const { tech } = req.query;
-    const filmes = await Filme.find({ techs: tech });
-    return res.json(filmes);
+    const os = await Os.find();
+    return res.json(os);
   },
 
   //create post
   async store(req, res) {
-    const { filename } = req.file;
-    const { company, techs, price } = req.body;
-    const { user_id } = req.headers;
-    console.log(
-      "req.file",
-      req.file,
-      "req.body;",
-      req.body,
-      "user",
-      req.headers
-    );
-    console.log("user_iddsddsdsdsdss", user_id);
-    const user = await User.findOne({ id: user_id });
-    console.log("dsdfs", user);
-    if (!user) {
-      return res.status(400).json({ error: "Usuário não existe" });
-    }
-    console.log("asw");
-    const filme = await Filme.create({
-      user: user_id,
-      thumbnail: filename,
-      company,
-      techs,
-      // : techs.split(",").map(tech => tech.trim()),
-      price
+    // const { filename } = req.file;
+    console.log(req.body);
+    const {
+      descricao,
+      numero,
+      responsavel,
+      valor,
+      type,
+      description,
+      date,
+      status,
+      url,
+      observacao,
+      search
+    } = req.body;
+
+    const os = await Os.create({
+      descricao,
+      numero,
+      responsavel,
+      valor,
+      type,
+      description,
+      date,
+      status,
+      url,
+      observacao,
+      search
     });
-    return res.json(spot);
+    return res.json(os);
   }
 };

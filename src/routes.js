@@ -31,9 +31,9 @@ function verifyJWT(req, res, next) {
 routes.post("/auth/:email/:senha", SessionController.validarLogin);
 routes.post("/api/sessions", SessionController.store);
 
-//inserir filme ou serie
-routes.post("/post", upload.single("thumbnail"), OsController.store);
-routes.get("/post", OsController.index);
+//inserir os
+routes.post("/os", upload.single("thumbnail"), OsController.store);
+routes.get("/os", OsController.index);
 
 // dashboard
 routes.get("/dashboard", DashboardController.show);
