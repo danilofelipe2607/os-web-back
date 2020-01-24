@@ -16,9 +16,16 @@ module.exports = {
       dataInicial,
       dataFinal,
       descricao
-    } = req.params.filtro;
-    console.log(responsavel);
-    const os = await Os.find();
+    } = req.body;
+    console.log(dataInicial);
+    // const os = await Os.find({
+    //   responsavel: responsavel,
+    //   status: status,
+    //   numero: numero
+    // });
+
+    const teste = await Os.where(c => c.date >= dataInicial);
+    console.log("osstestess", teste);
     return res.json(os);
   },
 

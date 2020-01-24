@@ -29,12 +29,12 @@ function verifyJWT(req, res, next) {
 
 //sessions //logar
 routes.post("/auth/:email/:senha", SessionController.validarLogin);
-routes.post("/api/sessions", SessionController.store);
+routes.post("/sessions", SessionController.store);
 
 //inserir os
 routes.post("/os", upload.single("thumbnail"), OsController.store);
 routes.get("/os", OsController.index);
-routes.get("/os/:filtro", OsController.getFiltro);
+routes.post("/osfiltro", OsController.getFiltro);
 
 // dashboard
 routes.get("/dashboard", DashboardController.show);
