@@ -8,10 +8,23 @@ module.exports = {
     return res.json(os);
   },
 
+  async getFiltro(req, res) {
+    const {
+      responsavel,
+      status,
+      numero,
+      dataInicial,
+      dataFinal,
+      descricao
+    } = req.params.filtro;
+    console.log(responsavel);
+    const os = await Os.find();
+    return res.json(os);
+  },
+
   //create post
   async store(req, res) {
     // const { filename } = req.file;
-    console.log(req.body);
     const {
       descricao,
       numero,

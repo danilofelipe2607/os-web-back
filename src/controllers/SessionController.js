@@ -8,11 +8,14 @@ module.exports = {
     const { email, senha } = req.params;
     const usuario = await User.find({ email: email, senha: senha });
     if (usuario.length) {
-      const { id } = usuario[0];
+      console.log(usuario);
+      const { id, name } = usuario[0];
       const token = jwt.sign({ id }, authConfig.secret, {
         expiresIn: 900 // expires in 15min
       });
-      return res.status(200).send({ auth: true, token: token, id: id });
+      return res
+        .status(200)
+        .send({ auth: true, token: token, id: id, name: name });
     }
     return res.status(202).json({ auth: false, error: "USER NOT FOUND" });
   },
