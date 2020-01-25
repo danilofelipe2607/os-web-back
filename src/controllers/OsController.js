@@ -13,19 +13,24 @@ module.exports = {
       responsavel,
       status,
       numero,
-      dataInicial,
-      dataFinal,
+      dateInicial,
+      dateFinal,
       descricao
     } = req.body;
-    console.log(dataInicial);
-    // const os = await Os.find({
-    //   responsavel: responsavel,
-    //   status: status,
-    //   numero: numero
-    // });
+    console.log(responsavel, status, numero, dateInicial, dateFinal, descricao);
 
-    const teste = await Os.where(c => c.date >= dataInicial);
-    console.log("osstestess", teste);
+    const os = await Os.find({
+      date: { $gte: dateInicial, $lte: dateFinal }
+    });
+
+    return res.json(os);
+  },
+  //delete OS
+
+  async deleteOs(req, res) {
+    const { numero } = req.params;
+    await Os.findOneAndDelete(numero);
+    const os = await Os.find();
     return res.json(os);
   },
 

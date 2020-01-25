@@ -34,6 +34,7 @@ routes.post("/sessions", SessionController.store);
 //inserir os
 routes.post("/os", upload.single("thumbnail"), OsController.store);
 routes.get("/os", OsController.index);
+routes.delete("/os/:item", OsController.deleteOs);
 routes.post("/osfiltro", OsController.getFiltro);
 
 // dashboard
