@@ -15,4 +15,9 @@ app.use(cors());
 app.use(express.json());
 app.use("/files", express.static(path.resolve(__dirname, "..", "uploads"))); //retorna arquivos
 app.use(routes);
-app.listen(process.env.PORT, "0.0.0.0");
+
+const host = "0.0.0.0";
+const port = process.env.PORT || 3335;
+app.listen(port, host, function() {
+  console.log("Server started.......");
+});
