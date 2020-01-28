@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const routes = require("./routes");
@@ -5,13 +6,10 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 const app = express();
-mongoose.connect(
-  "mongodb+srv://admin:589916@cluster0-udy8c.mongodb.net/test?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }
-);
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 app.use(cors());
 app.use(express.json());
