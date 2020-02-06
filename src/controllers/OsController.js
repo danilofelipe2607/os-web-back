@@ -28,8 +28,8 @@ module.exports = {
   //delete OS
 
   async deleteOs(req, res) {
-    const { numero } = req.params;
-    await Os.findOneAndDelete(numero);
+    const { id } = req.params;
+    await Os.findOneAndDelete(id);
     const os = await Os.find();
     return res.json(os);
   },
@@ -46,6 +46,7 @@ module.exports = {
       description,
       date,
       status,
+      tecnico,
       url,
       observacao,
       search

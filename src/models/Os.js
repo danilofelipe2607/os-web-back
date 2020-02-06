@@ -13,6 +13,7 @@ const OsSchema = new mongoose.Schema(
     date: Date,
     status: String,
     url: String,
+    tecnico: String,
     observacao: String,
     search: [String],
     user: {
