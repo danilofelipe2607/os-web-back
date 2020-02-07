@@ -17,7 +17,6 @@ module.exports = {
       dateFinal,
       descricao
     } = req.body;
-    console.log(responsavel, status, numero, dateInicial, dateFinal, descricao);
 
     const os = await Os.find({
       date: { $gte: dateInicial, $lte: dateFinal }
@@ -65,6 +64,30 @@ module.exports = {
       observacao,
       search
     });
+    return res.json(os);
+  },
+
+  async edit(req, res) {
+    console.log("aquiiiiiiiiiiiiiiiii", req.body);
+    const {
+      descricao,
+      numero,
+      responsavel,
+      valor,
+      type,
+      description,
+      date,
+      status,
+      tecnico,
+      url,
+      observacao,
+      search
+    } = req.body;
+
+    const os = await Os.findOneAndUpdate(req.body, {
+      new: true
+    });
+    console.log("osssssss", os);
     return res.json(os);
   }
 };
