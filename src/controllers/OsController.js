@@ -69,6 +69,8 @@ module.exports = {
 
   async edit(req, res) {
     console.log("aquiiiiiiiiiiiiiiiii", req.body);
+    console.log("req.params", req.params);
+    const { id } = req.params;
     const {
       descricao,
       numero,
@@ -84,9 +86,10 @@ module.exports = {
       search
     } = req.body;
 
-    const os = await Os.findOneAndUpdate(req.body, {
+    const osAtualiza = await Os.findByIdAndUpdate(id, req.body, {
       new: true
     });
+    const os = await Os.find();
     console.log("osssssss", os);
     return res.json(os);
   }

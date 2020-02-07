@@ -36,7 +36,7 @@ routes.post("/os", upload.single("thumbnail"), OsController.store);
 routes.get("/os", OsController.index);
 routes.delete("/os/:item", OsController.deleteOs);
 routes.post("/osfiltro", OsController.getFiltro);
-routes.put("/os", upload.single("thumbnail"), OsController.edit);
+routes.put("/os/:id", upload.single("thumbnail"), OsController.edit);
 
 // dashboard
 routes.get("/dashboard", DashboardController.show);
