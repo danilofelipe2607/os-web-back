@@ -17,11 +17,18 @@ module.exports = {
       dateFinal,
       descricao
     } = req.body;
-
+    console.log(req.body, "req.body");
     const os = await Os.find({
       date: { $gte: dateInicial, $lte: dateFinal }
     });
+    console.log(os, "ossssssssssssssssss");
 
+    if (os != null) {
+      if (descricao != "") {
+        const teste = await Os.find({ descricao: descricao });
+        console.log(teste, "descricao");
+      }
+    }
     return res.json(os);
   },
   //delete OS
