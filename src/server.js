@@ -8,6 +8,7 @@ const validarLogin = require("./controllers/SessionController");
 
 const app = express();
 const service = { tenant: "tenant2" };
+
 const conexao = `mongodb+srv://admin:123@cfc-kkhx8.mongodb.net/${service.tenant}?retryWrites=true&w=majority`;
 mongoose.connect(conexao, {
   useNewUrlParser: true,
@@ -24,3 +25,24 @@ const port = process.env.PORT || 3335;
 app.listen(port, host, function() {
   console.log("Server started.......");
 });
+
+// class teste {
+//   static _instance;
+//   tenant = [];
+
+//   constructor(){
+//     setInterval(()=>{
+
+//     }, 1000 * 60)
+//   }
+
+//   static getIntance(){
+//     if(this._instance){
+//       this._instance = new teste();
+//     }
+
+//     return this._instance;
+//   }
+// }
+
+// teste.getIntance().tenant.filter(t => t.id == 1);
