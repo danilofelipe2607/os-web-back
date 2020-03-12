@@ -10,7 +10,7 @@ module.exports = {
     if (usuario.length) {
       console.log(usuario);
       const { id, name } = usuario[0];
-      const token = jwt.sign({ id }, authConfig.secret, {
+      const token = jwt.sign({ id }, process.env.MYSECURITYTOKEN, {
         expiresIn: 900 // expires in 15min
       });
       return res

@@ -3,9 +3,6 @@ const multer = require("multer");
 const jwt = require("jsonwebtoken");
 const uploadConfig = require("./config/upload");
 const SessionController = require("./controllers/SessionController");
-const OsController = require("./controllers/OsController");
-const DashboardController = require("./controllers/DashboardController");
-const BookingController = require("./controllers/BookingController");
 
 const routes = express.Router();
 const upload = multer(uploadConfig);
@@ -29,17 +26,13 @@ function verifyJWT(req, res, next) {
 
 //sessions //logar
 routes.post("/auth/:email/:senha", SessionController.validarLogin);
-routes.post("/sessions", SessionController.store);
+routes.post("/sessions", verifyJWT, SessionController.store);
 
-//inserir os
-routes.post("/os", upload.single("thumbnail"), OsController.store);
-routes.get("/os", OsController.index);
-routes.delete("/os/:item", OsController.deleteOs);
-routes.post("/osfiltro", OsController.getFiltro);
-routes.put("/os/:id", upload.single("thumbnail"), OsController.edit);
-
-// dashboard
-routes.get("/dashboard", DashboardController.show);
-routes.post("/spots/:spot_id/bookings", BookingController.store);
+// //inserir os
+// routes.post("/os", verifyJWT, upload.single("thumbnail"), OsController.store);
+// routes.get("/os", verifyJWT, OsController.index);
+// routes.delete("/os/:item", OsController.deleteOs);
+// routes.post("/osfiltro", OsController.getFiltro);
+// routes.put("/os/:id", upload.single("thumbnail"), OsController.edit);
 
 module.exports = routes;
