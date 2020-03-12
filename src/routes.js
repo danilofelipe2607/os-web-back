@@ -26,7 +26,7 @@ function verifyJWT(req, res, next) {
 
 //sessions //logar
 routes.post("/auth/:email/:senha", SessionController.validarLogin);
-routes.post("/sessions", verifyJWT, SessionController.store);
+routes.post("/sessions", SessionController.store);
 
 // //inserir os
 // routes.post("/os", verifyJWT, upload.single("thumbnail"), OsController.store);
