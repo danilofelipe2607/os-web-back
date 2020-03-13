@@ -3,7 +3,8 @@ const multer = require("multer");
 const jwt = require("jsonwebtoken");
 const uploadConfig = require("./config/upload");
 const SessionController = require("./controllers/SessionController");
-
+const TesteController = require("./controllers/testeController");
+const UserSchema = require("./models/User");
 const routes = express.Router();
 const upload = multer(uploadConfig);
 
@@ -27,7 +28,7 @@ function verifyJWT(req, res, next) {
 //sessions //logar
 routes.post("/auth/:email/:senha", SessionController.validarLogin);
 routes.post("/sessions", SessionController.store);
-
+routes.get("/test", TesteController.FuncaoTeste);
 // //inserir os
 // routes.post("/os", verifyJWT, upload.single("thumbnail"), OsController.store);
 // routes.get("/os", verifyJWT, OsController.index);

@@ -5,9 +5,6 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
   async validarLogin(req, res) {
-    console.log(req, "uerueu");
-    const { email, senha } = req.params;
-
     //api sentinela
     // const usuario = await User.find({ email: email, senha: senha });
     // if (usuario.length) {
@@ -16,7 +13,7 @@ module.exports = {
 
     //   const token = jwt.sign({ id }, process.env.MYSECURITYTOKEN, {
     //     expiresIn: 900 // expires in 15min
-    //   });
+    //   });NOt
     //   return res
     //     .status(200)
     //     .send({ auth: true, token: token, id: id, name: name });
